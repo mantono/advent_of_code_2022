@@ -40,11 +40,11 @@ impl FromStr for Assignment {
         let mut parts = s.split(',');
         let first = parts.next().expect("Invalid input");
         let second = parts.next().expect("Invalid input");
-        Ok(Assignment(parse_range(first).unwrap(), parse_range(second).unwrap()))
+        Ok(Assignment(parse_set(first).unwrap(), parse_set(second).unwrap()))
     }
 }
 
-fn parse_range(input: &str) -> Result<BTreeSet<u8>, String> {
+fn parse_set(input: &str) -> Result<BTreeSet<u8>, String> {
     let mut parts = input.split('-');
     let start: u8 = parse_num(parts.next())?;
     let end: u8 = parse_num(parts.next())?;
